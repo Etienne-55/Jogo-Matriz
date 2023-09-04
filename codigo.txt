@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIZE 3
+
+//Preenche com valores aleatórios
+void preencherMatriz(int matriz[SIZE][SIZE]) {
+    for(int i = 0; i < SIZE; i++) {
+        for(int j = 0; j < SIZE; j++) {
+            matriz[i][j] = rand() %100 + 1;
+        }
+    }
+}
+
+int main() {
+    int matriz[SIZE][SIZE];
+    int escolhaUsuario, numeroAleatorio;
+    
+    srand(time(NULL));
+    
+    preencherMatriz(matriz);
+//Mostra matriz 
+    printf("Matriz:\n");
+    for(int i = 0; i < SIZE; i++){
+        for(int j = 0; j < SIZE; j++){
+            printf("%d\t", matriz[i][j]);
+    } 
+    printf("\n");
+}
+//Escolha do usúario
+printf("Escolha um número: ");
+scanf("%d", &escolhaUsuario);
+//Escolha do número aleatório
+numeroAleatorio = matriz[rand() % SIZE][rand() % SIZE];
+//Verificação da vitória
+if (escolhaUsuario == numeroAleatorio){
+    printf("Você ganhou!!!\n");
+    
+}else { 
+    printf("Você errou, o número escolhido foi: %d\n", numeroAleatorio);
+}
+
+return 0;
+
+}
